@@ -1,10 +1,10 @@
 // Global Variables
 int ballX, ballPositionX;
 int ballY, ballPositionY;
-int ballMoveX = 1;
-int ballMoveY = 1;
+int ballStartX;
+int ballStartY;
 int ballDiameter;
-float ballMoveY = 1.0;
+float ballMoveX = 1.0;
 float ballMoveY = 1.0;
 
 void setup() {
@@ -32,7 +32,7 @@ void draw() {
   }
 
   fill(0); //black
-  ellipse(ballPositionX, height/2+ballX, width/70, width/70); // ball is ratio of width
+  ellipse(ballX, ballY, width/70, width/70); // ball is ratio of width
   // Pong table here is square but does not need to be
   // Thus take same key-variable for size of ball
   print ("ballX: " + ballX);
