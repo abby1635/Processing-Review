@@ -6,6 +6,7 @@ int ballStartY;
 int ballDiameter;
 float ballMoveX = 1.0;
 float ballMoveY = 1.0;
+int score [] 
 
 void setup() {
   size(500, 500);
@@ -17,7 +18,25 @@ void setup() {
 
 void draw() {
   background(#D5A3F5); //purple
-
+  
+  //
+  
+  //Ball Movement within Pong Table
+  if (ballX == 0 ) { //Score for Player 2, note the index
+  }
+  if (ballX == width ) { //Score for Player 1
+  score[1] += 1;
+  println ("score Board is: " + score[0] + "Player-1" + "     " +  "Player-2");
+  ballX = ballStartX;
+  ballY = ballStartY;
+  }
+  if (ballX == width ) { //Score for Player 1
+  score[1] += 1;
+  println ("Score Board is: " + score[1] + " Player 1" + "     " + score[2] + " Player 2");
+  ballX = ballStartX;
+  ballY = ballStartY;
+  
+  }
   if (ballX == 500 | ballY == 500) {
     if (ballX == 500) {
       ballMoveY= ballMoveX * (-1);
