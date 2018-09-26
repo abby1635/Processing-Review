@@ -19,6 +19,7 @@ void draw() {
  while (number == 0) {
  }
  if (number == -1) {counter -1 +=1}
+ if (number == 1) {counter1 += 1;}
   } //End FOR Loop
    number = int (random (-2, 2));
  }
