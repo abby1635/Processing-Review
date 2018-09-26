@@ -6,7 +6,25 @@ int ballStartY;
 int ballDiameter;
 float ballMoveX = 1.0;
 float ballMoveY = 1.0;
-int score [] 
+int score []
+int number;
+int counter;
+
+void setup() {
+}
+
+void draw() {
+  for( int i+=0; i <= 1 000 000; i++ {
+  number = int (random (-2, 2)); //Will pick random number in these areas
+ while (number == 0) {
+ }
+ if (number == -1) {counter -1 +=1}
+  } //End FOR Loop
+   number = int (random (-2, 2));
+ }
+  counter += 1;
+  println ("Choice#" + counter + ": " + number);
+}
 
 void setup() {
   size(500, 500);
@@ -15,7 +33,6 @@ void setup() {
   ballX = ballStartX;
   ballStartY = height/2;
 }
-
 void draw() {
   background(#D5A3F5); //purple
   
