@@ -8,31 +8,7 @@ float ballMoveX = 1.0;
 float ballMoveY = 1.0;
 int score [];
 int number;
-int counter;
-
-void draw() {
-  background(#D5A3F5); //purple
-  for( int i=0; i <= 1000000; i++) { 
-  number = int (random (-2, 2)); //Will pick random number in these areas
- while (number == 0) {
- }
-
- if (number == -1) {counter -1 += 1;}
- if (number == 1) {counter1 += 1;}
-  }
-  println ("Number of -1: " + counter[0]);
-  println ("Number of 1: " + counter[1]);
-  exit(); //Ensures Draw Loop ends too; exit() is how we build a Quit Button
-  
-  // noLoop(); //Stops the Manditory draw() {} Function after one cycle
-  // Great way to break the Automatic Draw Loop
-  
-   //End FOR Loop
-   number = int (random (-2, 2)); {
- }
-  counter += 1;
-  println ("Choice#" + counter + ": " + number);
-}
+int [] counter = {1, -1};
 
 void setup() {
   size(500, 500);
@@ -41,6 +17,18 @@ void setup() {
   ballX = ballStartX;
   ballStartY = height/2;
 }
+
+void draw() {
+  background(#D5A3F5); //purple
+  for( int i=0; i <= 1000000; i++) { 
+  number = int (random (-2, 2)); //Will pick random number in these areas
+ while (number == 0) {
+ }
+
+ if (number == -1) {counter[0] += 1;}
+ if (number == 1) {counter[1] += 1;}
+  }
+// ln print
 
   
   //Ball Movement within Pong Table
