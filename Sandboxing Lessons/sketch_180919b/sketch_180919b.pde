@@ -34,6 +34,15 @@ int section = width / paddleWidthRatio; // Local Variable: calculate the divisio
 player[2] = width*(section-1)/section; // *(paddlewidthRatio-1)/paddlewidthRatio
 player[3] = height/2;
 }
+float [] number = {0.3, 0.49, 0.5, 0.7, 0.9, 1.1, 1.49, 1.6};
+int counter;
+
+  println ("Checking Array Length to debug casting: " + number.length); //should return
+  for (int i=0; i<number.length; i++) {
+    println ("Casting " + number[i] + " to " + int(number[i]) );
+  }
+  println ("What do these examples show us about Casting-Narrow and Rounding?");
+  }
 
 void draw() {
   background(#D5A3F5); //purple
@@ -78,6 +87,59 @@ void draw() {
   if (ballY <= height && ballY >= 0) {
     ballY += ballMoveY; //origionally x+1 operation
   }
+  fill(#FF00FF); //Purple
+  rect(player[0], player[1], paddle[0], paddle[1]);
+  rect(player[2], player[3], paddle[0], paddle[1]);
+  fill(0); //Reseting to Black
+  
+  //Debugging Ball Position
+  //print ("Ball X-Value: " + ballX);
+  //println (", Ball Y-Value: " + ballY);
+  }
+  
+  //Code to Move Paddles, keyboard and mouseX&Y key variables
+  //Player 1 Movement
+  if (keyPressed == true & key == CODED { //alternate is void keyPressed(){}, always contains the most recent keyboard key stroke
+   if (keyCode == UP) { //KeyCode is used for UP, DOWN, LEFT, and RIGHT; and ALT, CONTROL, and SHIFT
+     if (player[1] >= 5) { //Easier to use && instead of nesting IF statements
+       player[1] -= 5; //Review incrementation other than -1
+     }
+     if (player[1] < 0) { //Catch any subtraction equalling less than zero
+       player[1] =0;
+     }
+   }
+   
+   if (keyCode == DOWN) {
+     if (player[1] + paddle[1] <= height) {
+       player[1] += 5; //Review incrementation other than +1
+     }
+     if (player[1] + paddle[1] <= height) {
+       player[1] = height - paddle[1] - 1; //Cannot add "player[1] + paddle[1]" in an assignment; thus algebra needed
+       //Note: the "-1" shows the black border of the paddle at the bottom, which looks more aesthetic
+       //Note: the height is actually -1 pixel because of the border
+     }
+   }
+  } //End of keyPressed
+  
+  //Player 2 Movement
+  player[3] = ballY - paddle[1]/2;
+  if (player[3] <= 0) {
+    player[3] = 0;
+  }
+  if (player[3] >= height - paddle[1]){
+    player[3] = height - paddle[1] - 1;
+  }
+  
+    //Drawing Paddles
+  fill(FF00FF); //Purple
+  rect(player[0], player[1], paddle[0], paddle[1]);
+  rect(player[2], player[3], paddle[0], paddle[1]);
+  fill(0); //Reseting to Black
+  
+  //Debugging Ball Position
+  //print ("Ball X-Value: + ballX);
+  //println (", Ball Y-Value: " + ballY);
+}
 
   fill(0); //black
   ellipse(ballX, ballY, width/70, width/70); // ball is ratio of width
