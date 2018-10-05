@@ -21,8 +21,10 @@ void setup() {
   size(500, 500);
   ballPositionX = width/2; //starting ball position;
   ballStartX = width/2;
-  ballX = ballStartX;
   ballStartY = height/2;
+  ballX = ballStartX;
+  ballY = ballStartY;
+  ballDiameter = width/70; //must pick one dimension for both ellipse diameters, for a circle
 }
 
 paddleWidthRatio = ballDiameter/2;
@@ -55,6 +57,36 @@ void draw() {
  if (number == 1) {counter[1] += 1;}
   }
 // ln print
+}
+
+//Printing Ball
+fill(0); //Black
+ellipse(ballX, ballY, ballDiameter, ballDiameter);
+
+//Printing Score to the Canvas
+textSize(0.1*width);
+text("Player 1:\n" + score[0], (width*1/5)-(0.1*width), height*1/5); //Printing to ration of screen, Player 1 is minusing width of font
+// Note: review of Character escape and this seems to "busy" on the screen
+text(score[1], width*4/5, height*1/5);
+
+
+//Debugging Ball Position
+//print ("Ball X-Value: " + ballX);
+//println (", Ball Y-Value: " + ballY);
+}
+
+number = int (random (-2, 2));
+while (number == 0) {
+  number = int (random (-2, 2));
+}
+counter += 1;
+println ("Choice#" + counter + ": " + number);
+}
+
+//Calculating "next" ball position
+//Section necessary when calling functions so passing current arguments
+ballX += ballMoveX; //origionally x+1 operation
+ballY += ballMoveY; //origionally x+1 operation
 
   
   //Ball Movement within Pong Table
@@ -62,6 +94,25 @@ void draw() {
     if (ballX == 0) { //Player 2 Score
       score[1] += 1;
   }
+  if (ballY == height || ballY == 0) {
+    ballMoveY = ballMoveY * (-1);
+  }
+  
+  //Printing Ball
+  fill(0); //Black
+  ellipse(ballX, ballY, ballDiameter, ballDiameter);
+  
+  //Drawing Paddles
+  fill(#FF00FF); //Purple
+  rect(player[0], player[1], paddle[0], paddle[1]);
+  rect(player[2], player[3], paddle[0], paddle[1]);
+  fill(0); //Reseting to Black
+  
+  //Debugging Ball Position
+  //print ("Ball X-Value: " + ballX);
+  //println (", Ball Y-Value: " ballY);
+  }
+  
   if (ballX == width ) { //Score for Player 1
   score[1] += 1;
   println ("score Board is: " + score[0] + "Player-1" + "     " +  "Player-2");
